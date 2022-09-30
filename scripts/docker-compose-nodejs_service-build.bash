@@ -5,4 +5,4 @@ cd "$(dirname "$0")" || exit
 echo "🟢  START 🐳  NodeJS Service conatiner "
 docker compose --env-file ../.env.config \
   --file ../docker/nodejs_service.dev.docker-compose.yaml up --detach --build
-bash docker-nodejs_showcase-test.bash
+bash docker-nodejs_service-test.bash
