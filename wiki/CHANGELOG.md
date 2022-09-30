@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/paulAlexSerban/tpl--nodejs-service/compare/v1.0.0...v1.1.0) (2022-09-30)
+
+
+### Features
+
+* **structure:** initial ([c9f09af](https://github.com/paulAlexSerban/tpl--nodejs-service/commit/c9f09afe9c6ea45936099e891df9518ef8b81bcd))
+
 # 1.0.0 (2022-09-27)
 
 

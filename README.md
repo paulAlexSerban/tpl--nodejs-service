@@ -1,17 +1,10 @@
 # NodeJS-Basic-Vanilla-Server
 
-
-## to refactor
-# NodeJS in Docker
-## Building your image
-* inside the directory where you have the `Dockerfile` and run:
-    - `$ docker build -t <your username>/node-web-app`
-## Run the image
-* `docker run -p 49160:8080 -d <your username>/node-web-app`
-    - `-d` flag runs the container in detached mode
-    - `-p` redirects a public port to a private port
-* if you need to go insie the container use the `exec`command
-    - `docker exec -it <container id> /bin/bash`
-## Test
-* `docker ps`
-* `curl -i localhost:49160`
+## Deploy to AWS
+- make sure you have or create a AWS VPC
+- install AWS CLS and configure it with your AWS credentials
+- add the required data in `.env.dev`
+- if you have previously deployed to AWS ECR - re-tag the image
+  - run `bash scripts/ecr-nodejs_service-remove-latest-tag.bash`
+- deploy your current/latest image to AWS ECR
+  - RUN `bash scripts/ecr-nodejs_service-deploy.bash` to deploy your current image
