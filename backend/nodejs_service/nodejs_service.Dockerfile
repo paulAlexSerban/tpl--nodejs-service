@@ -1,4 +1,4 @@
-FROM node:14.19.1
+FROM node:14.20.1
 
 # Create app directory
 RUN mkdir -p /usr/src/app
@@ -8,8 +8,6 @@ WORKDIR /usr/src/app
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
 COPY package.json /usr/src/app/
-
-RUN npm install pm2 -g
 
 # RUN npm install && npm cache clean
 # if you build you code for production
