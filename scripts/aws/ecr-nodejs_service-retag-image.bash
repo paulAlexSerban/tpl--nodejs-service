@@ -1,7 +1,7 @@
 #!/bin/bash
 # makes sure the folder containing the script will be the root folder
 cd "$(dirname "$0")" || exit
-source ../.env.dev
+source ../../.env.dev
 
 echo "Get the image manifest for the image to retag and write it to a file"
 MANIFEST=$(aws ecr batch-get-image --repository-name $ECR_REPO_NAME --image-ids imageTag=latest --output json | jq --raw-output --join-output '.images[0].imageManifest')

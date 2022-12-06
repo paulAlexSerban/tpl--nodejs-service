@@ -6,19 +6,19 @@ const requestHandler = (req, res) => {
 
   res.setHeader("Content-Type", "text/html");
 
-  if (url === "/") {
+  if (url === "/submit-message") {
     res.write(`
-  <html>
-    <head>
-      <title>Enter message:</title>
-    </head>
-    <body>
-      <form action="/message" method="POST">
-        <input type="text" name="message">
-        <button type="submit">Submit</button>
-      </form>
-    </body>
-  </html>
+    <html>
+      <head>
+        <title>Enter message:</title>
+      </head>
+      <body>
+        <form action="/message" method="POST">
+          <input type="text" name="message">
+          <button type="submit">Submit</button>
+        </form>
+      </body>
+    </html>
   `);
     return res.end();
   }
@@ -33,9 +33,9 @@ const requestHandler = (req, res) => {
     return req.on("end", () => {
       const parsedBody = Buffer.concat(body).toString();
       const message = parsedBody.split("=")[1];
-      fs.writeFile("message.txt", message, (error) => {
+      fs.writeFile(`message-${Date.now()}.txt`, message, (error) => {
         res.statusCode = 302;
-        res.setHeader("Location", "/");
+        res.setHeader("Location", "/submit-message");
         return res.end();
       });
     });
