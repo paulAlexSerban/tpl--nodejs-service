@@ -3,8 +3,8 @@
 cd "$(dirname "$0")" || exit
 
 echo " 🛑  STOP ALL 🐳  Docker and clean containers"
-docker compose --env-file ../../config.env \
-  --file ../../docker/nodejs_service.dev.docker-compose.yaml --volumes --rmi all
+docker compose --env-file ../../.env \
+  --file ../../docker/nodejs_service.dev.docker-compose.yaml  down --volumes --rmi all
 docker container prune -f
 docker volume prune -f
 docker image prune -af
