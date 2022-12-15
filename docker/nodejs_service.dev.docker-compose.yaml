@@ -9,11 +9,15 @@ services:
     build:
       context: ../backend/nodejs_service
       dockerfile: nodejs_service.Dockerfile
+      args:
+        NODE_PORT: $NODE_PORT
+    environment:
+      NODE_PORT: $NODE_PORT
     image: paulserbandev/nodejs-service
     container_name: nodejs_service-compose
     restart: always
-    volumes: 
+    volumes:
       - ../backend/nodejs_service:/usr/src/app/
       - /usr/src/app/node_modules
-    ports: 
-      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+    ports:
+      - $NODE_PORT:$NODE_DOCKER_PORT
