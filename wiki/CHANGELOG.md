@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/paulAlexSerban/tpl--nodejs-service/compare/v1.1.0...v1.2.0) (2022-12-06)
+
+
+### Features
+
+* **adust:** adjusted scripts - prep for node-farm ([25a3bf3](https://github.com/paulAlexSerban/tpl--nodejs-service/commit/25a3bf34bce6f0ec2c3b4974e9100c5b7f0ce75f))
+
 # [1.1.0](https://github.com/paulAlexSerban/tpl--nodejs-service/compare/v1.0.0...v1.1.0) (2022-09-30)
 
 
