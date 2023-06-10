@@ -1,5 +1,8 @@
 # NodeJS-Basic-Vanilla-Server
 
+## Some Useful Development Commands
+- `bash modulize.bash -e dev -p install` - Install all dependencies for all modules.
+
 ## Deploy to AWS
 - make sure you have or create a AWS VPC
 - install AWS CLS and configure it with your AWS credentials
