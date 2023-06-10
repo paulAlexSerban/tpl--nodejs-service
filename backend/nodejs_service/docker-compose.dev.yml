@@ -1,0 +1,19 @@
+---
+version: "3.7"
+# ---------------------------------------------------------------------
+# | NodeJS Service                                                    |
+# ---------------------------------------------------------------------
+
+services:
+  nodejs_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: paulserbandev/nodejs-service
+    container_name: nodejs_service-compose
+    restart: always
+    volumes: 
+      - .:/usr/src/app/
+      - /usr/src/app/node_modules
+    ports:
+      - $NODE_PORT:$NODE_DOCKER_PORT
