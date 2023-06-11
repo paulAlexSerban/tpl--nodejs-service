@@ -4,6 +4,6 @@ cd "$(dirname "$0")" || exit
 
 source ../config.env
 
-echo "🟢 RUN DOCKER 🐳 ${FORMTED_PROJECT_NAME}"
-docker run -p 3000:3000 --name nodejs_service -d paulserbandev/nodejs_service
+echo "🟢 STOP DOCKER 🐳 ${FORMTED_PROJECT_NAME}"
+docker stop web-server
 docker ps

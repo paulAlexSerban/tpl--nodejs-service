@@ -5,5 +5,5 @@ cd "$(dirname "$0")" || exit
 source ../config.env
 
 echo "🧪 TEST DOCKER 🐳 ${FORMTED_PROJECT_NAME}"
-bash ../../../docker/test/check-docker-container.bash nodejs_service
+bash ../../../docker/test/check-docker-container.bash web-server
 docker ps

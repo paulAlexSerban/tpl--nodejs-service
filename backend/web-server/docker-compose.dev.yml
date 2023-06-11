@@ -5,12 +5,12 @@ version: "3.7"
 # ---------------------------------------------------------------------
 
 services:
-  nodejs_service:
+  web-server:
     build:
       context: .
       dockerfile: Dockerfile
-    image: paulserbandev/nodejs-service
-    container_name: nodejs_service-compose
+    image: paulserbandev/web-server
+    container_name: web-server-compose
     restart: always
     volumes: 
       - .:/usr/src/app/
