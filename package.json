@@ -10,11 +10,7 @@
         "install:root": "npm install",
         "prepare": "husky install",
         "formats:check": "npx prettier --check .",
-        "formats:write": "npx prettier --write .",
-        "MODULIZE": "SCRIPTS",
-        "mdz:dev:build": "bash modulize.bash --env dev --phase build",
-        "mdz:dev:clean": "bash modulize.bash --env dev --phase clean",
-        "mdz:dev:install": "bash modulize.bash --env dev --phase install"
+        "formats:write": "npx prettier --write ."
     },
     "author": "Paul Serban",
     "license": "ISC",
