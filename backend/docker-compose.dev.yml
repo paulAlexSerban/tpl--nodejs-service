@@ -1,0 +1,49 @@
+---
+version: "3.7"
+
+services:
+# ---------------------------------------------------------------------
+# | Web Server                                                        |
+# ---------------------------------------------------------------------
+  web-server:
+    build:
+      context: ./web-server
+      dockerfile: Dockerfile
+    image: paulserbandev/web-server
+    container_name: web-server-compose
+    restart: always
+    volumes: 
+      - ./web-server:/usr/src/app/
+      - /usr/src/app/node_modules
+    ports:
+      - $WEB_SERVER_PORT:$NODE_DOCKER_PORT
+# ---------------------------------------------------------------------
+# | API Service (Vanilla Node.JS)                                     |
+# ---------------------------------------------------------------------
+  api-server:
+    build:
+      context: ./api-server
+      dockerfile: Dockerfile
+    image: paulserbandev/api-server
+    container_name: api-server-compose
+    restart: always
+    volumes: 
+      - ./api-server:/usr/src/app/
+      - /usr/src/app/node_modules
+    ports:
+      - $API_PORT:$NODE_DOCKER_PORT
+# ---------------------------------------------------------------------
+# | API Service (Express.js)                                          |
+# ---------------------------------------------------------------------
+  express-api-server:
+    build:
+      context: ./express-api-server
+      dockerfile: Dockerfile
+    image: paulserbandev/express-api-server
+    container_name: express-api-server-compose
+    restart: always
+    volumes: 
+      - ./express-api-server:/usr/src/app/
+      - /usr/src/app/node_modules
+    ports:
+      - $EXPRESS_PORT:$NODE_DOCKER_PORT
