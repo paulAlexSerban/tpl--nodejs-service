@@ -1,9 +1,10 @@
-# NodeJS-Basic-Vanilla-Server
+# NodeJS Services Template
 
 ## Some Useful Development Commands
-- `bash modulize.bash -e dev -p install` - Install all dependencies for all modules.
+- `bash modulize.bash -e dev -p compose-start` - Start the development environment with docker-compose
 
-## Deploy to AWS
+@TODO - implement deploy to AWS ECR on push to master
+Some ideas:
 - make sure you have or create a AWS VPC
 - install AWS CLS and configure it with your AWS credentials
 - add the required data in `.env.dev`

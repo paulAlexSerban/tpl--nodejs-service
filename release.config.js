@@ -1,6 +1,6 @@
 module.exports = {
   branches: "release",
-  repositoryUrl: "https://github.com/paulAlexSerban/tpl--nodejs-service",
+  repositoryUrl: "https://github.com/paulAlexSerban/tpl--nodejs-services",
   plugins: [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
