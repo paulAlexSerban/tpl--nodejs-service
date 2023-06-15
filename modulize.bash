@@ -1,12 +1,12 @@
 #!/bin/bash
 set -eo pipefail
-MODULIZE_VERSION=$(node -p "require('./package.json').version")
+PROJECT_VERSION=$(node -p "require('./package.json').version")
 PORJECT_NAME=$(node -p "require('./package.json').name")
 PORJECT_AUTHOR=$(node -p "require('./package.json').author")
 # makes sure the folder containing the script will be the root folder
 cd "$(dirname "$0")" || exit
 
-. ./config.env
+. ./.env
 
 # Colors for printing messages
 NC='\033[0m' # No Color
@@ -32,10 +32,10 @@ usage() {
 
 print_header() {
   echo "================================================"
-  echo -e "   Modulize Project Automation by Paul Serban"
-  echo -e "   Project Name: ${BLUE}${PORJECT_NAME}${NC}"
-  echo -e "   Version: ${BLUE}${MODULIZE_VERSION}${NC}"
-  echo -e "   Project Author:  ${BLUE}${PORJECT_AUTHOR}${NC}"
+  echo -e "   Modulize Project Automation v1.7.0"
+  echo -e "   Prj. Name: ${BLUE}${PORJECT_NAME}${NC}"
+  echo -e "   Prj. Version: ${BLUE}${PROJECT_VERSION}${NC}"
+  echo -e "   Prj. Author:  ${BLUE}${PORJECT_AUTHOR}${NC}"
   echo "================================================"
 }
 
@@ -74,7 +74,7 @@ init() {
 
     if [[ -f "${PHASE_PATH}/scripts/${PHASE_NAME}.bash" ]]; then
       print_info "${PHASE_NAME}ing ${BLUE}${PHASE_DIR}${NC}"
-      bash "${PHASE_PATH}/scripts/${PHASE_NAME}.bash" -e $ENV -p $PHASE
+      bash "${PHASE_PATH}/scripts/${PHASE_NAME}.bash" -e $ENV
 
       # Print a message indicating that the module has been installed and how long it took
       print_info "${PHASE_NAME}ed ${BLUE}${PHASE_DIR}${NC}"
@@ -83,7 +83,7 @@ init() {
 
   local PROJECT_MODULES=("${INSTALL_PROJECT_MODULES[@]}")
 
-  if [[ $PHASE == "clean" ]] || [[ $PHASE == "uninstall" ]] || [[ $PHASE == "docker-stop" ]]; then
+  if [[ $PHASE == "clean" ]] || [[ $PHASE == "uninstall" ]]; then
     PROJECT_MODULES=("${UNINSTALL_PROJECT_MODULES[@]}")
   fi
 
@@ -98,21 +98,15 @@ init() {
         if [[ "$DIR" == "scripts" ]]; then
           phase ./${i} ${PHASE} ${i}
         fi
-        if [[ ! -f "./${i}/config.env" ]]; then
+        if [[ ! -f "./${i}/.env" ]]; then
           phase ./${i}/${DIR} ${PHASE} ${DIR}
         fi
       done
 
-      if [[ -f "./${i}/config.env" ]]; then
-        . "./${i}/config.env"
+      if [[ -f "./${i}/.env" ]]; then
+        . "./${i}/.env"
 
-        local PROJECT_SUBMODULES=("${INSTALL_MODULE_SUBPROJECTS[@]}")
-
-        if [[ $PHASE == "clean" ]] || [[ $PHASE == "uninstall" ]] || [[ $PHASE == "docker-stop" ]]; then
-          PROJECT_SUBMODULES=("${UNINSTALL_MODULE_SUBPROJECTS[@]}")
-        fi
-
-        for j in "${PROJECT_SUBMODULES[@]}"; do
+        for j in "${INSTALL_MODULE_SUBPROJECTS[@]}"; do
           phase ./${i}/${j} ${PHASE} ${j}
         done
       else

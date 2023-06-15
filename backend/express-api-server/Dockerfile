@@ -9,7 +9,7 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package.json /usr/src/app/
 
-# RUN npm install && npm cache clean
+RUN npm install
 # if you build you code for production
 # RUN npm ci --ony=production
 
@@ -20,4 +20,4 @@ EXPOSE 3000
 
 # Command to run when the container is ready
 # Separate arguments as separate values in the array
-CMD [ "npm", "run", "start"]
+CMD [ "npm", "run", "serve"]
